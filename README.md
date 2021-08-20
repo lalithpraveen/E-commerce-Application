@@ -1,4 +1,17 @@
-In this project, let's build a **Nxt Trendz - Cart Features** by applying the concepts we have learned till now.
+In this project, let's built a **Nxt Trendz - E-Commerce Application** by applying the concepts I have learned till now.
+
+
+**Prime User credentials**
+  ```
+   username: rahul
+   password: rahul@2021
+  ```
+
+**Non-Prime User credentials**
+  ```
+   username: raja
+   password: raja@2021
+   ```
 
 ### Refer to the image below:
 
@@ -10,61 +23,78 @@ In this project, let's build a **Nxt Trendz - Cart Features** by applying the co
   </video>
 </div>
 
-### Design Files
-
-<details>
-<summary>Click to view</summary>
-
-- [Extra Small (Size < 576px) and Small (Size >= 576px)](https://assets.ccbp.in/frontend/content/react-js/nxt-trendz-cart-features-sm-output.png)
-- [Medium (Size >= 768px), Large (Size >= 992px) and Extra Large (Size >= 1200px)](https://assets.ccbp.in/frontend/content/react-js/nxt-trendz-cart-features-lg-output.png)
-
-</details>
-
-### Set Up Instructions
-
-<details>
-<summary>Click to view</summary>
-
-- Download dependencies by running `npm install`
-- Start up the app using `npm start`
-</details>
-
-### Completion Instructions
-
-<details>
-<summary>Functionality to be added</summary>
-<br/>
 
 The app must have the following functionalities
 
-- When an _unauthenticated user_ tries to access the **Cart** route, the page should be navigated to Login Route
+- When an _unauthenticated user_ tries to access the **Home, Products or Cart** route, the page will be navigated to Login Route
 
-- Following are the features need to implemented
+- Following are the features implemented
 
-- Feature 1
+  -When invalid credentials are provided in the login form and clicked on the Login button then the respective error message from the response will displayed.
+  
+  -When the username and password are provided correctly and clicked on the Login button then the page should navigate to **HomeRoute**.
+  
+  -When an undefined path is provided in the URL then the page navigate to the **NotFoundRoute**.
+  
+  -When the Logout button is clicked then the page  be navigated to the LoginRoute.
+  
+  -When an authenticated user opens the Products Route then an HTTP GET request should be made to **productsApiUrl** with query parameters `title_search`, `category`, and `rating` with initial values as **empty strings**.
+  
+- When a value is entered in the Search Input and the `Enter` button is clicked
+  - Make an HTTP GET request to the URL productsApiUrl with `jwt_token` in the Cookies and query parameter `title_search` with value as the text entered in the         Search Input
+  - Display _loader_ while fetching the response
+  - After the data is fetched successfully, display the list of products received in the response
 
-  - When an authenticated user tries to add the same product multiple times
-    - The quantity of the product should be updated accordingly, and the count of the cart items in the header should be remained same
+- When a **Category** is clicked
+  - Make an HTTP GET request to the URL **productsApiUrl** with `jwt_token` in the Cookies and query parameter `category` with value as the id of the category           clicked
+  - Display _loader_ while fetching the response
+  - After the data is fetched successfully, display the list of products received in the response
 
-- Feature 2
+- When a **Rating** is clicked
+  - Make an HTTP GET request to the URL **productsApiUrl** with `jwt_token` in the Cookies and query parameter `rating` with value as the id of the rating clicked
+  - Display _loader_ while fetching the response
+  - After the data is fetched successfully, display the list of products received in the response
 
-  - The total amount and number of items in the cart should be displayed in the Cart Route
+- When the **Clear Filters** button is clicked
+  - All the filters applied should be reset to initial values
+  - Make an HTTP GET request to the URL **productsApiUrl** with`jwt_token` in the Cookies and without any filters
+  - Display _loader_ while fetching the response
+  - After the data is fetched successfully, display the list of products received in the response
 
-- Feature 3
+- When multiple filters are applied, then the HTTP GET request should be made with all the filters that are applied
+  - For example: When the **Electronics** Category is clicked and rating **4 and above** is clicked the **productsApiUrl** will be as follows
+  
+- When an _authenticated user_ clicks on a product in the Products Route, then the page should be navigated to **Product Item Details** route.
 
-  - In each cart item in the cart
+- When the **Product Item Details** route is opened,
+  - An HTTP GET request should be made to productDetailsApiUrl with `product id` as path parameter.
+  - **_loader_** should be displayed while the HTTP request is fetching the data
+  - After the HTTP request is successful, the response received should be displayed.
+  - The quantity of the product should initially be 1.
+  - The quantity of the product should be incremented by 1 when the plus icon is clicked.
+  - The quantity of the product should be decremented by 1 when the minus icon is clicked.
+  - The list of similar products should be displayed.
+
+- When the **Product Item Details** route is opened, if the response received in the HTTP GET request returns the status as `404`, then the [Failure view](https://assets.ccbp.in/frontend/content/react-js/nxt-trendz-product-details-error-lg-output.png) should be displayed.
+
+- When the **Continue Shopping** button in the [Failure view](https://assets.ccbp.in/frontend/content/react-js/nxt-trendz-product-details-error-lg-output.png) is     clicked, the page should be navigated to Products Route.
+
+- When an _unauthenticated user_ tries to access the **Product Item Details** route, the page should be navigated to Login Route
+ 
+- When an authenticated user tries to add the same product multiple times
+  - The quantity of the product should be updated accordingly, and the count of the cart items in the header should be remained same
+
+- The total amount and number of items in the cart should be displayed in the Cart Route
+
+- In each cart item in the cart
     - The quantity of the product should be incremented by one when the plus icon is clicked
     - The quantity of the product should be decremented by one when the minus icon is clicked
     - When the quantity of the product is one and the minus icon is clicked, then the respective product should be removed from the cart
     - Based on the quantity of the product, the product price and the Cart Summary, i.e the total cost should be updated accordingly
 
-- Feature 4
+- When an _authenticated user_ clicked on the remove button, Cart Item should be removed from the CartList
 
-  - When an _authenticated user_ clicked on the remove button, Cart Item should be removed from the CartList
-
-- Feature 5
-
-  - When an _authenticated user_ clicked on the **Remove all** button, all the Cart Items should be removed from the cart and [EmptyCartView](https://assets.ccbp.in/frontend/content/react-js/nxt-trendz-cart-features-empty-cart-view.png) should be displayed
+- When an _authenticated user_ clicked on the **Remove all** button, all the Cart Items should be removed from the cart and [EmptyCartView]                           (https://assets.ccbp.in/frontend/content/react-js/nxt-trendz-cart-features-empty-cart-view.png) should be displayed
 
 - The following are the keys used in the context object
   - `cartList` - this variable stores the cart items
@@ -74,111 +104,4 @@ The app must have the following functionalities
   - `incrementCartItemQuantity` - this function increases the quantity of the product in the cart list
   - `decrementCartItemQuantity` - this function decreases the quantity of the product in the cart list
 
-</details>
 
-<details>
-<summary>Components Structure</summary>
-
-<br/>
-<div style="text-align: center;">
-    <img src="https://assets.ccbp.in/frontend/content/react-js/nxt-trendz-cart-features-component-structure-breakdown.png" alt="component structure breakdown" style="max-width:100%;box-shadow:0 2.8px 2.2px rgba(0, 0, 0, 0.12)">
-</div>
-<br/>
-
-</details>
-
-<details>
-<summary>Implementation Files</summary>
-<br/>
-
-Use these files to complete the implementation:
-
-- `src/App.js`
-- `src/components/Cart/index.js`
-- `src/components/Cart/index.css`
-- `src/components/CartItem/index.js`
-- `src/components/CartItem/index.css`
-- `src/components/CartSummary/index.js`
-- `src/components/CartSummary/index.css`
-</details>
-
-#### Quick Tips
-
-<details>
-<summary>Click to view Quick Tips</summary>
-
-- The `line-height` CSS property sets the height of a line box. It's commonly used to set the distance between lines of text.
-
-  ```
-  line-height: 1.5;
-  ```
-
-    <br/>
-    <img src="https://assets.ccbp.in/frontend/react-js/line-height-img.png" alt="cursor pointer" style="width:90%; max-width: 600px;"/>
-
-</details>
-
-### Important Note
-
-<details>
-<summary>Click to view</summary>
-
-<br/>
-
-**The following steps are to be followed for the tests to pass**
-
-- `BsPlusSquare`, `BsDashSquare` icons from `react-icons` should be used for **plus** and **minus** buttons in cart item.
-- The Cart Item should consist of two HTML button elements with `testid` attribute values as **plus** and **minus** respectively.
-- `AiFillCloseCircle` icon from react-icons should be used for **remove** button in cartItem.
-- The Cart Item should consist of an HTML button element with `testid` attribute values as **remove**.
-- The product image in Cart Item Route should have the alt text as **{title}** of the product.
-
-- Prime User credentials
-
-  ```
-   username: rahul
-   password: rahul@2021
-  ```
-
-- Non-Prime User credentials
-
-  ```
-   username: raja
-   password: raja@2021
-  ```
-
-- find()
-
-  - The `find()` method returns the first item's value that satisfies the provided testing function. If no item is found, it returns `undefined`.
-
-  **Syntax**: `arr.find(Testing Function)`
-
-</details>
-
-### Resources
-
-<details>
-<summary>Colors</summary>
-
-<br/>
-
-<div style="background-color: #0b69ff; width: 150px; padding: 10px; color: white">Hex: #0b69ff</div>
-<div style="background-color: #171f46; width: 150px; padding: 10px; color: white">Hex: #171f46</div>
-<div style="background-color: #616e7c; width: 150px; padding: 10px; color: white">Hex: #616e7c</div>
-<div style="background-color: #ffffff; width: 150px; padding: 10px; color: black">Hex: #ffffff</div>
-
-</details>
-
-<details>
-<summary>Font-families</summary>
-
-- Roboto
-
-</details>
-
-> ### _Things to Keep in Mind_
->
-> - All components you implement should go in the `src/components` directory.
-> - Don't change the component folder names as those are the files being imported into the tests.
-> - **Do not remove the pre-filled code**
-> - Want to quickly review some of the concepts you’ve been learning? Take a look at the Cheat Sheets.
