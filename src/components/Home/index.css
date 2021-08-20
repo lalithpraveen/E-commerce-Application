@@ -14,7 +14,7 @@
   .home-container {
     flex-direction: row;
     justify-content: space-between;
-    padding-top: 96px;
+    padding-top: 46px;
   }
 }
 
