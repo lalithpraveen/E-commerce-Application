@@ -24,7 +24,7 @@ In this project, let's built a **Nxt Trendz - E-Commerce Application** by applyi
 </div>
 
 
-The app have the following functionalities
+The app have the following functionalities:
 
 - When an _unauthenticated user_ tries to access the **Home, Products or Cart** route, the page will be navigated to Login Route
 
