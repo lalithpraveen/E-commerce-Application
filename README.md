@@ -1,5 +1,6 @@
 In this project, let's built a **Nxt Trendz - E-Commerce Application** by applying the concepts I have learned till now.
 
+**Project live link** https://onepieceshop.ccbp.tech/
 
 **Prime User credentials**
   ```
